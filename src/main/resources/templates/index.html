@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title th:text="${msg}">Document</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
@@ -45,7 +45,24 @@
       </nav>
 
       <div class="container">
-          <h1 th:text="${msg}"></h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>code</th>
+              <th>name</th>
+              <th>price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="product : ${products}">
+              <td th:text="${product.id}"></td>
+              <td th:text="${product.code}"></td>
+              <td th:text="${product.name}"></td>
+              <td th:text="${product.price}"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
 
