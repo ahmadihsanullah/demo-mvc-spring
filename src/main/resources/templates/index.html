@@ -52,6 +52,7 @@
               <th>code</th>
               <th>name</th>
               <th>price</th>
+              <th>action</th>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +61,10 @@
               <td th:text="${product.code}"></td>
               <td th:text="${product.name}"></td>
               <td th:text="${product.price}"></td>
+              <td>
+                <a href="edit" class="btn btn-success">edit</a>
+                <a th:href="@{/delete/{id}(id=${product.id})}" th:id="${product.id}" class="btn btn-danger">del</a>
+              </td>
             </tr>
           </tbody>
         </table>
