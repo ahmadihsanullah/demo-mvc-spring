@@ -3,10 +3,12 @@ package com.kelaskoding.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.apple.laf.resources.aqua;
 import com.kelaskoding.entity.Product;
 import com.kelaskoding.utils.RandomNumber;
 
@@ -34,5 +36,14 @@ public class ProductService {
 
     public void deleteById(Long id){
         products.removeIf(product -> product.getId().equals(id));
+    }
+
+    public Optional<Product> findById(Long id){
+        return products.stream().filter(product -> product.getId().equals(id)).findFirst();
+    }
+
+    public void updateProduct(Product product){
+        deleteById(product.getId());
+        add(product);
     }
 }

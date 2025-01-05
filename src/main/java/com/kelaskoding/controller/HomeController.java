@@ -51,5 +51,19 @@ public class HomeController {
         productService.deleteById(id);
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model){
+        model.addAttribute("product", productService.findById(id));
+        return "edit";
+    }
+
+    @PostMapping("/update")
+    public String save(Product product, Model model){
+        // call service update 
+        productService.updateProduct(product);
+        return "redirect:/";
+    }
+
     
 }
