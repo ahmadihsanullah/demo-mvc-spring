@@ -1,21 +1,28 @@
 package com.kelaskoding.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tbl_product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String code;
+    @Column(nullable = false)
     private String name;
     private Double price;
 
     public Product() {
     }
 
-    public Product(Long id, String code, String name, Double price) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.price = price;
-    }
-    
     public Long getId() {
         return id;
     }
